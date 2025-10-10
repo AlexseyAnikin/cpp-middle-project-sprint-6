@@ -7,14 +7,22 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Launch Dispatcher",
-            "program": "${workspaceFolder}/build/dispatcher",
+            "name": "Launch queue tests",
+            "program": "${workspaceFolder}/build/tests/queue/queue_test",
             "args": [],
             "cwd": "${workspaceFolder}/build",
-            "preLaunchTask": "GCC: Build Debug app",
-            "initCommands": [
-                "settings set target.disable-aslr false"
-            ]
+            "preLaunchTask": "GCC: Build Debug",
+            "initCommands": ["settings set target.disable-aslr false"]
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Launch dispatcher tests",
+            "program": "${workspaceFolder}/build/tests/dispatcher_test",
+            "args": [],
+            "cwd": "${workspaceFolder}/build",
+            "preLaunchTask": "GCC: Build Debug",
+            "initCommands": ["settings set target.disable-aslr false"]
         }
     ]
 }
