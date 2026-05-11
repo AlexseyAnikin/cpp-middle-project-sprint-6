@@ -4,7 +4,6 @@
 namespace dispatcher::queue {
 
 class BoundedQueue : public IQueue {
-    // здесь ваш код
 public:
     explicit BoundedQueue(int capacity);
 
@@ -13,6 +12,13 @@ public:
     std::optional<std::function<void()>> try_pop() override;
 
     ~BoundedQueue() override;
+
+private:
+    std::queue<std::function<void()>> tasks_;
+    std::size_t capacity_ = 0;
+
+    std::mutex mutex_;
+    std::condition_variable has_space_cv_;
 };
 
 }  // namespace dispatcher::queue

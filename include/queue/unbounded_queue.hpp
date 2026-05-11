@@ -4,7 +4,6 @@
 namespace dispatcher::queue {
 
 class UnboundedQueue : public IQueue {
-    // здесь ваш код
 public:
     explicit UnboundedQueue(int capacity);
 
@@ -13,6 +12,10 @@ public:
     std::optional<std::function<void()>> try_pop() override;
 
     ~UnboundedQueue() override;
+
+private:
+    std::queue<std::function<void()>> tasks_;
+    std::mutex mutex_;  
 };
 
 }  // namespace dispatcher::queue
