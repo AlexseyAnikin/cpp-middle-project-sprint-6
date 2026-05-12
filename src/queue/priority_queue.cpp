@@ -32,7 +32,7 @@ PriorityQueue::PriorityQueue(std::map<TaskPriority, QueueOptions> options)
     }
 }
 
-void PriorityQueue::push(TaskPriority priority, std::function<viod()> task)
+void PriorityQueue::push(TaskPriority priority, std::function<void()> task)
 {
     IQueue* selected_queue = nullptr;
 
@@ -67,7 +67,7 @@ std::optional<std::function<void()>> PriorityQueue::pop()
 {
     std::unique_lock lock(mutex_);
 
-    cv.wait(lock, [this] {
+    cv_.wait(lock, [this] {
         return shutdown_requested_ || task_count_ > 0;
     });
 

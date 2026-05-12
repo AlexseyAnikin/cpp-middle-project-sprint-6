@@ -20,9 +20,9 @@ void BoundedQueue::push(std::function<void()> task)
 {
     std::unique_lock lock(mutex_);
 
-    has_space_cv.wait(lock, [this]
+    has_space_cv_.wait(lock, [this]
     {
-        return task_.size() < capacity_;
+        return tasks_.size() < capacity_;
     });
 
     tasks_.push(std::move(task));
@@ -40,14 +40,14 @@ std::optional<std::function<void()>> BoundedQueue::try_pop()
     auto task = std::move(tasks_.front());
     tasks_.pop();
 
-    has_space_cv.notify_one();
+    has_space_cv_.notify_one();
 
     return task;
 }
 
 BoundedQueue::~BoundedQueue()
 {
-    has_space_cv.notify_all();
+    has_space_cv_.notify_all();
 }
 
 } // namespace dispatcher::queue

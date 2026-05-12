@@ -18,7 +18,7 @@ class TaskDispatcher {
 public:
     TaskDispatcher(
         std::size_t thread_count = std::thread::hardware_concurrency(),
-        std::map<TaskPriority, queue::QueueOptions> queue_options = DefaultQueueOptions();
+        std::map<TaskPriority, queue::QueueOptions> queue_options = DefaultQueueOptions()
     );
 
     void schedule(TaskPriority priority, std::function<void()> task);

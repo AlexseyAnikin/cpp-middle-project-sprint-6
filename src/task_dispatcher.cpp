@@ -35,6 +35,5 @@ void TaskDispatcher::schedule(TaskPriority priority, std::function<void()> task)
 }
 
 TaskDispatcher::~TaskDispatcher() = default;
-}
 
-} // namespace dispatcher
+}  // namespace dispatcher

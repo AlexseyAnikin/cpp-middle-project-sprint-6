@@ -11,7 +11,7 @@ namespace dispatcher::thread_pool {
 
 class ThreadPool {
 public:
-  ThreadPool(std::shared_ptr<queue::PriorityQueue> queue, srd::size_t thread_count);
+  ThreadPool(std::shared_ptr<queue::PriorityQueue> queue, std::size_t thread_count);
 
   ~ThreadPool();
 

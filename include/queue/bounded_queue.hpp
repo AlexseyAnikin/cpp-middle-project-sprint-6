@@ -1,6 +1,11 @@
 #pragma once
 #include "queue/queue.hpp"
 
+#include <mutex>
+#include <queue>
+#include <condition_variable>
+#include <cstddef>
+
 namespace dispatcher::queue {
 
 class BoundedQueue : public IQueue {

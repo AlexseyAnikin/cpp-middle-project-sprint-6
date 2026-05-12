@@ -11,6 +11,8 @@
 #include <optional>
 #include <stdexcept>
 #include <unordered_map>
+#include <condition_variable>
+#include <cstddef>
 
 namespace dispatcher::queue {
 
